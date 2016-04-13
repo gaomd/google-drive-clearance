@@ -8,6 +8,7 @@
  * 1. Follow the Step 1: Turn on the Drive API on https://developers.google.com/drive/v3/web/quickstart/php#prerequisites
  * 2. Place the downloaded `client_secret.json` to the credentials directory.
  * 3. php start-clearance.php
+ * 4. Manually empty the trash on the Google Drive Web
  */
 require __DIR__ . '/vendor/autoload.php';
 
@@ -77,7 +78,7 @@ $client = getClient();
 $service = new Google_Service_Drive($client);
 
 $optParams = [
-    'q'      => "mimeType != 'application/vnd.google-apps.folder' and 'me' in owners and trashed = false",
+    'q'      => "'me' in owners and trashed = false",
     'fields' => "nextPageToken, nextLink, items(id, title)",
 ];
 
